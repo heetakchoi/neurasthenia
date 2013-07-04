@@ -1,0 +1,18 @@
+README
+
+0. Neurasthenia is a implementation of Servlet spec. 2.5
+   Distributed by LGPL v3
+   https://github.com/heetakchoi/neurasthenia
+
+
+1. Function
+   * Subset of servlet spec. 2.5
+   * Servlet works
+   * JSP works (by Jasper2 engine)
+   * Comet support
+   ** Streaming
+   * General purpose network server
+   ** HTTP, Stomp protocal support
+
+2. To install
+   Check INSTALL document
