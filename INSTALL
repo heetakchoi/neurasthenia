@@ -1,22 +1,23 @@
 INSTALL
 
 * Requirement
-	For running
-		1. JRE 1.6 (http://java.sun.com)
-	For running & using jsp
-		1. JDK 1.6 (http://java.sun.com)
-	For building
-		1. JDK 1.6 (http://java.sun.com)
-		2. ANT 1.7 (http://ant.apache.org)
+  For running
+  1. JRE 1.6 (http://java.sun.com)
+  For running & using jsp
+  1. JDK 1.6 (http://java.sun.com)
+  For building
+  1. JDK 1.6 (http://java.sun.com)
+  2. ANT 1.7 (http://ant.apache.org)
 
 * Download & running
-	For using
-		1. Download neurasthenia.tar.gz (http://kldp.net/projects/neurasthenia/download)
-		2. Decompress it
-		3. cd neurasthenia
-		4. ./boot.sh (for unix), boot.bat (for windows)
-	For development
-		1. Checkout neurasthenia (http://kldp.net/projects/neurasthenia/src)
-		2. cd neurasthenia
-		3. ant
-		4. ./boot.sh (for unix), boot.bat (for windows)
+  For using
+  1. Download neurasthenia.tar.gz (http://kldp.net/projects/neurasthenia/download)
+  2. Decompress it
+  3. cd neurasthenia
+  4. ./boot.sh (for unix), boot.bat (for windows)
+
+* For development
+  1. Checkout neurasthenia (http://kldp.net/projects/neurasthenia/src)
+  2. cd neurasthenia
+  3. ant
+  4. ./boot.sh (for unix), boot.bat (for windows)
