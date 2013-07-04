@@ -1,0 +1,12 @@
+README
+
+0. Neurasthenia 는 Comet 을 지원하는 ServletContainer 입니다.
+	LGPL v3 아래 라이센스로 배포되고 있습니다.
+	kldp.net 에서 제공하고 있는 오픈소스 프로젝트 공간을 이용하여 제공되고 있습니다.
+	http://kldp.net/projects/neurasthenia
+
+1. 설치 문서는 INSTALL 문서를 확인하세요.
+
+2. 매뉴얼은 webctx/doc/index.html 을 참조하세요.
+	1.1 아직 많은 부분이 부족합니다.
+

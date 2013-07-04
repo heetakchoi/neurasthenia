@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<neurasthenia>
+	<selector-manager>
+		<init-queue-size>2</init-queue-size>
+	</selector-manager>
+	
+	<check-connection>
+		<init-delay>15000</init-delay>
+		<delay>15000</delay>
+		<during>1200</during>
+	</check-connection>
+
+	<thread-pool-executor>
+		<core-pool-size>100</core-pool-size>
+		<maximum-pool-size>100</maximum-pool-size>
+		<keep-alive-time>300</keep-alive-time>
+		<queue-class>java.util.concurrent.LinkedBlockingQueue</queue-class>
+	</thread-pool-executor>
+	
+	<message-queue-list>
+		<message-queue>
+			<id>handler_queue</id>
+			<queue-class>java.util.concurrent.LinkedBlockingQueue</queue-class>
+		</message-queue>
+		<message-queue>
+			<id>scatter_queue</id>
+			<queue-class>java.util.concurrent.LinkedBlockingQueue</queue-class>
+		</message-queue>
+	</message-queue-list>
+	
+	<gather-list>
+		<gather>
+			<id>stomp</id>
+			<service-type>gather_stomp</service-type>
+			<port>2701</port>
+			<read-select-timeout>2</read-select-timeout>
+			<read-buffer-size>2048</read-buffer-size>
+			<ref-message-queue-id>handler_queue</ref-message-queue-id>
+		</gather>
+		<gather>
+			<id>http</id>
+			<service-type>gather_http</service-type>
+			<port>2780</port>
+			<read-select-timeout>2</read-select-timeout>
+			<read-buffer-size>2048</read-buffer-size>
+			<ref-message-queue-id>handler_queue</ref-message-queue-id>
+		</gather>
+		<gather>
+			<id>echo</id>
+			<service-type>gather_echo</service-type>
+			<port>2750</port>
+			<read-select-timeout>2</read-select-timeout>
+			<read-buffer-size>2048</read-buffer-size>
+			<ref-message-queue-id>handler_queue</ref-message-queue-id>
+		</gather>
+	</gather-list>
+	
+	<handler-list>
+		<handler>
+			<id>default_handler</id>
+			<service-type>handler</service-type>
+			<ref-message-queue-id>handler_queue</ref-message-queue-id>
+		</handler>
+	</handler-list>
+	
+	<scatter-list>
+		<scatter>
+			<id>default_scatter</id>
+			<service-type>scatter</service-type>
+			<ref-message-queue-id>scatter_queue</ref-message-queue-id>
+		</scatter>
+	</scatter-list>
+
+	<web-container>
+		<id>web_container</id>
+		<service-type>webcontainer</service-type>
+		<represent-files>index.html</represent-files>
+<!-- 
+		<context-root-directory>/home/member/endofhope/neurasthenia/webctx</context-root-directory>
+		<common-class-path>/home/member/endofhope/neurasthenia/classes</common-class-path>
+-->
+		<encoding>UTF-8</encoding>
+		<context-list>
+
+			<context>
+				<context-name>hello</context-name>
+				<context-path>/hello</context-path>
+				<context-directory>hello</context-directory>
+				<context-version>0</context-version>
+			</context>
+
+ 
+			<context>
+				<context-name>root</context-name>
+				<context-path>/</context-path>
+				<context-directory>root</context-directory>
+				<context-version>0</context-version>
+			</context>
+
+ <!-- 
+			<context>
+				<context-name>doc</context-name>
+				<context-path>/doc</context-path>
+				<context-directory>doc</context-directory>
+				<context-version>0</context-version>
+			</context>
+-->
+			<context>
+				<context-name>examples</context-name>
+				<context-path>/examples</context-path>
+				<context-directory>examples</context-directory>
+				<context-version>0</context-version>
+			</context>
+		</context-list>
+	</web-container>
+</neurasthenia>

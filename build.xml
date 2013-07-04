@@ -1,0 +1,48 @@
+<project name="neurasthenia" basedir="." default="jar">
+
+  <property name="src.dir" value="${basedir}/src" />
+  <property name="src.jasper.dir" value="${basedir}/src_jasper" />
+  <property name="classes.dir" value="${basedir}/classes" />
+  <property name="classes.jasper.dir" value="${basedir}/classes_jasper" />
+  <property name="lib.dir" value="${basedir}/lib" />
+
+  <path id="lib.path">
+	<fileset dir="${lib.dir}">
+	  <include name="**/*.jar" />
+	</fileset>
+  </path>
+
+  <target name="compile">
+	<mkdir dir="${classes.dir}" />
+	<mkdir dir="${classes.jasper.dir}" />
+	<javac 
+	   debug="on"
+	   debuglevel="lines,vars,source"
+	   encoding="UTF-8"
+	   srcdir="${src.dir}" 
+	   destdir="${classes.dir}">
+	  <classpath refid="lib.path" />
+    </javac>
+	<javac 
+	   debug="on"
+	   debuglevel="lines,vars,source"
+	   encoding="UTF-8"
+	   srcdir="${src.jasper.dir}" 
+	   destdir="${classes.jasper.dir}">
+	  <classpath refid="lib.path" />
+    </javac>
+  </target>
+
+  <target name="jar" depends="compile">
+	<jar destfile="${lib.dir}/neurasthenia.jar" basedir="${classes.dir}" />
+	<jar destfile="${lib.dir}/neurasthenia_jasper.jar" basedir="${classes.jasper.dir}" />
+	<jar destfile="startup.jar" basedir="${classes.dir}" includes="com/endofhope/neurasthenia/bootstrap/*" />
+  </target>
+
+  <target name="clean">
+	<delete file="${lib.dir}/neurasthenia.jar" />
+	<delete file="${lib.dir}/neurasthenia_jasper.jar" />
+	<delete dir="${classes.dir}/" />
+  </target>
+
+</project>
